@@ -61,3 +61,5 @@ Promise.all(requests)
     response => alert(`${response.url}: ${response.status}`)
   ));
  */
+
+ //очередь микрозадач
