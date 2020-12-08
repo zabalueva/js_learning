@@ -6,7 +6,6 @@ function delay(ms) {
 
 delay(3000).then(() => alert('выполнилось через 3 секунды')); */
 
-console.log(true)
 
 /* new Promise((resolve, reject) => {
   resolve("ок");
@@ -46,12 +45,8 @@ let user = fetch(`https://api.github.com/users/${name}`)
   .catch(error => alert(error.message));
 
 
-/* let urls = [
-  'https://api.github.com/users/iliakan',
-  'https://api.github.com/users/remy',
-  'https://api.github.com/users/jeresig'
-];
 
+/* 
 // Преобразуем каждый URL в промис, возвращённый fetch
 let requests = urls.map(url => fetch(url));
 
@@ -59,8 +54,8 @@ let requests = urls.map(url => fetch(url));
 Promise.all(requests)
   .then(responses => responses.forEach(
     response => alert(`${response.url}: ${response.status}`)
-  ));
- */
+  )); */
+ 
 
  //очередь микрозадач
 
