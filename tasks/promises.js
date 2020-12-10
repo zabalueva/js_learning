@@ -26,21 +26,20 @@ let user = fetch(`https://api.github.com/users/${name}`)
     dateCreate = githubUser.created_at;
 
     let currentDate = new Date;
-    let calcDate = new Date(Date.parse(dateCreate));
-    let calcutDate = ((currentDate - calcDate) / 1000 / 60 / 60 / 24);
-    let fixedDate = calcutDate.toFixed(0);
-    alert(`${fixedDate} дней вы на гитхабе!`);
+    let formatDate = new Date(Date.parse(dateCreate));
+    let calcutDate = ((currentDate - formatDate) / 1000 / 60 / 60 / 24);
+    alert(`${calcutDate.toFixed(0)} дней вы на гитхабе!`);
 
     img.className = "promise-avatar-example";
     document.body.append(img);
     document.body.append(dateCreate);
-    document.body.append(fixedDate);
+    document.body.append(calcutDate.toFixed(0));
 
 
-    setTimeout(() => {
-      /* img.remove(); */
+    /* setTimeout(() => {
+      img.remove();
       resolve(githubUser);
-    }, 3000);
+    }, 3000); */
   }))
   .catch(error => alert(error.message));
 

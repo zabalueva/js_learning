@@ -10,9 +10,51 @@
     <p>Everyone on the Internet knows about us))...</p>
 
     <p>Аватар и дата создания аккаунта на гитхаб.</p>
-    
+    <div id="elem">Мигающий элемент</div>
+
+<!-- <script>
+  setInterval(() => elem.hidden = !elem.hidden, 1000);
+</script> -->
+
+<ul id="ul"></ul>
+
+<script>
+function getListContent() {
+  let fragment = new DocumentFragment();
+
+  for(let i=1; i<=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+</script>
 
     <script src="tasks/promises.js"></script>
+
+    <script>
+      function showNotification({ top = 0, right = 0, className, html }) {
+          let div = document.createElement('div');
+          div.className = "notification";
+          document.append.div;
+          /* your code */
+      }
+
+      // test it
+      let i = 1;
+      setInterval(() => {
+          showNotification({
+              top: 10,
+              right: 10,
+              html: 'Hello ' + i++,
+              className: "welcome"
+          });
+      }, 2000);
+  </script>
 
 </body>
 
