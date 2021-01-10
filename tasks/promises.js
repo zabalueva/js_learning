@@ -32,6 +32,7 @@ let user = fetch(`https://api.github.com/users/${name}`)
 
     img.className = "promise-avatar-example";
     document.body.append(img);
+    document.body.append(img);
     document.body.append(dateCreate);
     document.body.append(calcutDate.toFixed(0));
 
