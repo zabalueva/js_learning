@@ -79,7 +79,7 @@ console.log(palindrome('racecar')) */
 output (15) */
 
 
-function anagram(str, trs) {
+/* function anagram(str, trs) {
     console.log(str.split(''))
     let arr = str.split('');
     let arr2 = trs.split('');
@@ -92,6 +92,71 @@ function anagram(str, trs) {
     };
 }
     
+anagram('ref', "fer") */
 
 
-anagram('ref', "fer")
+const buildCharObject = str => {
+    const charObj = {}
+    for(let char of str.replace(/[^\w]/g).toLowerCase()) {
+      // Если объект уже содержит пару ключ-значение равную значению в цикле,
+      // увеличиваем значение на 1, в противном случае добавляем букву в качестве ключа
+      // и 1 в качестве значения
+      charObj[char] = charObj[char] + 1 || 1
+    }
+    return charObj
+}
+  
+
+const fra  = "fefefe"
+console.log(fra.replace(/[^\w]/g))
+
+
+console.log(buildCharObject(fra))
+
+
+const findVowels = str => {
+    const matches = str.match(/[aeiou]/gi);
+    console.log(matches)
+    return matches ? matches.length : 0
+}
+
+findVowels(fra)
+
+//ниже недоработанный код
+const num0 = 0;
+const num1 = 1;
+const fibbonachi = (num) => {
+    let arr = [0, 1];
+    /* for num */
+    const nextNum = num0 + num1;
+    arr.push(nextNum);
+    num0 = nextNum;
+    
+    return arr[num];
+}
+
+console.log(null == undefined);
+
+/* throw "Ошибкаc"; */
+/* throw new Error("Ошибкаy") */
+/* throw { message: "Ошибкаh" } */
+/* throw Error("Ошибка") */
+
+function User() { }
+User.prototype = { admin: false };
+
+let user = new User();
+console.log(user.admin);
+
+console.log(parseInt("1px"));
+console.log(parseInt("-1.2"));
+console.log(parseInt("0 минут"));
+console.log(parseInt("$1.2"));
+
+console.log(new Array.prototype.constructor(1, 2));
+console.log(new Array(1, 2));
+console.log(Array(1, 2));
+console.log([1, 2]);
+/* console.log(1..2) */
+
+console.log(typeof(function(){}))
