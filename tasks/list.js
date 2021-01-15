@@ -135,14 +135,14 @@ const fibbonachi = (num) => {
     return arr[num];
 }
 
-console.log(null == undefined);
+
 
 /* throw "Ошибкаc"; */
 /* throw new Error("Ошибкаy") */
 /* throw { message: "Ошибкаh" } */
 /* throw Error("Ошибка") */
 
-function User() { }
+/* function User() { }
 User.prototype = { admin: false };
 
 let user = new User();
@@ -158,5 +158,3 @@ console.log(new Array(1, 2));
 console.log(Array(1, 2));
 console.log([1, 2]);
 /* console.log(1..2) */
-
-console.log(typeof(function(){}))
