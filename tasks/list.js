@@ -6,12 +6,12 @@ console.log(str[0]); */
     return arguments
         .toString()
         .split(",")
-        .splice(0) 
-        .join(arguments[0])       
+        .splice(0)
+        .join(arguments[0])
 } */
 
 /* function conc() {
-    return [].slice.call(arguments, 1).join(arguments[0])       
+    return [].slice.call(arguments, 1).join(arguments[0])
 }
 
 console.log(conc('*', '1', 'b', '1c'));
@@ -42,17 +42,17 @@ console.log(f(4)(3)); */
 
 /* const obj = {
     x: 'bob',
-    funk: function () { console.log(this.x) }  
+    funk: function () { console.log(this.x) }
 };
 
 function value() {
-    console.log( this.x); 
+    console.log( this.x);
 }
 
 value.call(obj);
 value.apply(obj);
 obj.funk(); */
-/* 
+/*
 console.log(typeof function () { })
 
 function palindrome(str) {
@@ -85,13 +85,13 @@ output (15) */
     let arr2 = trs.split('');
     if (arr.length === arr2.length) {
         for (let i = 0; i < arr2.length; i++) {
-            
+
             return arr.includes(arr2[i], 0)
-                
+
         }
     };
 }
-    
+
 anagram('ref', "fer") */
 
 
@@ -105,7 +105,7 @@ const buildCharObject = str => {
     }
     return charObj
 }
-  
+
 
 const fra  = "fefefe"
 console.log(fra.replace(/[^\w]/g))
@@ -131,7 +131,7 @@ const fibbonachi = (num) => {
     const nextNum = num0 + num1;
     arr.push(nextNum);
     num0 = nextNum;
-    
+
     return arr[num];
 }
 
@@ -158,3 +158,21 @@ console.log(new Array(1, 2));
 console.log(Array(1, 2));
 console.log([1, 2]);
 /* console.log(1..2) */
+
+
+function mygcd(x, y) {
+	let targ;
+	if (x >= y) {
+		targ = x % y;
+		targ == 0 ? y : (x % targ == 0 && y % targ == 0) ? targ : targ = y % targ;
+	} else {
+		targ = y % x;
+		if (targ == 0) {
+			return x;
+		} else if (x % targ == 0 && y % targ == 0)
+		return targ;
+	}
+	return targ;
+}
+
+console.log(mygcd(8,9))
