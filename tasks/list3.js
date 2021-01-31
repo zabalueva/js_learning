@@ -69,7 +69,7 @@ const anagram = (strA, strB) => {
 
 console.log(anagram('роз', 'Зор')) */
 
-
+/*
 function mygcd(x, y) {
 	let targ;
 	let result;
@@ -85,7 +85,7 @@ function mygcd(x, y) {
 			x %= y
 		} else { y %= x };
 	}
-	
+
 
 
 	return result;
@@ -106,7 +106,7 @@ function NOD (x, y) {
 }
 
 console.log(NOD(9, 3))
-
+ */
 /*
 function factorial1(n){
 	let result = 1;
