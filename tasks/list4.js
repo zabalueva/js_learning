@@ -37,53 +37,55 @@ function check(str, bracketsConfig) {
 			bracketsConfigAll[i] = bracketsConfig[i];
 			bracketsConfigAllList = bracketsConfigAll.toString().split(",");
 		}
+
 		console.log(str);
 		console.log(bracketsConfigAllList);
 
 		for (let i = 0; i < str.length; i++) {
 			find = bracketsConfigAllList.indexOf(str[i]);
-		/* console.log(find) */
+			console.log(find)
 
-			if ((bracketsConfigAllList[find + 1])) {
-				result = 'g';
-			}
+			if (bracketsConfigAllList[find + 1]) {
 
-			if (i % 2 == 0) {
-				for (let j = 1; j < str.length; j += 2) {
-
-					if (bracketsConfigAllList[find + 1] == str[j]) {
-						/* console.log(`true on index ${i}`); */
-						result = true;
-						break;
-					} else {
-						/* console.log(`false on index ${i}`) */
-						result = false;
-					}
-				}
-			}
-
-				if (i % 2 !== 0) {
-					for (let j = 2; j < str.length; j += 2) {
+				if (i % 2 == 0) {
+					for (let j = i + 1; j < str.length; j += 2) {
 
 						if (bracketsConfigAllList[find + 1] == str[j]) {
-							/* console.log(`true on index ${i}`) */
+							console.log(`true on index ${i}${j}`);
 							result = true;
 							break;
 						} else {
-							/* console.log(`false on index ${i}`) */
+							console.log(`false == 0 on index ${i}${j} !`)
 							result = false;
+							break;
+						}
+					}
+				}
+
+				if (i % 2 !== 0) {
+					for (let j =  i + 1; j < str.length; j += 2) {
+
+						if (str[j] == bracketsConfigAllList[find + 1]) {
+							console.log(`true on index ${i}${j}`)
+							result = true;
+							break;
+						} else {
+							console.log(`false on index ${i}${j}`)
+							result = false;
+							break;
 						}
 					}
 				}
 			}
 		}
+	}
 	return result;
 }
 
 
-console.log(check("()", [["(", ")"]])); // -> true
-console.log(check("())(", [["(", ")"]])); // -> false
+/* console.log(check("()", [["(", ")"]])); // -> true
+console.log(check("())(", [["(", ")"]])); // -> false //!
 console.log(check('[(])', [['(', ')'], ['[', ']']]))// -> false
 console.log(check('()', [['(', ')']])) // -> true
-console.log(check('((()))()', [['(', ')']])) // -> true
+console.log(check('((()))()', [['(', ')']])) // -> true */
 console.log(check('([{}])', [['(', ')'], ['[', ']'], ['{', '}']])) // -> true
