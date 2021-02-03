@@ -31,19 +31,33 @@ function check(str, bracketsConfig) {
 	let bracketsConfigAll = [];
 	let bracketsConfigAllList = [];
 	let find;
+	let workLength = str.length;
+	let regexp = /\p{Ps}/u;
 
 	if (str.length % 2 == 0) {
 		for (let i = 0; i < bracketsConfig.length; i++) {
 			bracketsConfigAll[i] = bracketsConfig[i];
 			bracketsConfigAllList = bracketsConfigAll.toString().split(",");
 		}
+		if (str.length !== 2) {
+			workLength = str.length - 2
+		}
+
+		for (let i = 0; i < workLength; i += 2) {
+			if (str[str.length - 1] == bracketsConfigAllList[i]) {
+				return false;
+			}
+		}
 
 		console.log(str);
 		console.log(bracketsConfigAllList);
 
-		for (let i = 0; i < str.length; i++) {
+		for (let i = 0; i < workLength; i++) {
 			find = bracketsConfigAllList.indexOf(str[i]);
 			console.log(find)
+			console.log(bracketsConfigAllList[find + 1])
+
+
 
 			if (bracketsConfigAllList[find + 1]) {
 
@@ -70,7 +84,7 @@ function check(str, bracketsConfig) {
 							result = true;
 							break;
 						} else {
-							console.log(`false on index ${i}${j}`)
+							console.log(`false ${str.length }i ${str[i] } str[j]  ${str[j]} bracketsConfigAllList[find + 1] ${bracketsConfigAllList[find + 1]} on index ${i}${j}`)
 							result = false;
 							break;
 						}
@@ -83,9 +97,6 @@ function check(str, bracketsConfig) {
 }
 
 
-/* console.log(check("()", [["(", ")"]])); // -> true
-console.log(check("())(", [["(", ")"]])); // -> false //!
-console.log(check('[(])', [['(', ')'], ['[', ']']]))// -> false
-console.log(check('()', [['(', ')']])) // -> true
-console.log(check('((()))()', [['(', ')']])) // -> true */
-console.log(check('([{}])', [['(', ')'], ['[', ']'], ['{', '}']])) // -> true
+
+/* console.log(check("())(", [["(", ")"]])); // -> false */
+console.log(check("111115611111111222288888822225577877778775555666677777777776622222", [['1', '2'], ['3', '4'], ['5', '6'], ['7', '7'], ['8', '8']])); // -> false
