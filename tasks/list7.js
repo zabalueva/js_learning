@@ -86,7 +86,7 @@ console.log(transform([1, 2, 3, '--discard-next', 1337, '--double-prev', 4, 5]))
 
 
 
-
+/*
 addLink(value) {
 	if (!value){
 		value = ' ';
@@ -109,4 +109,4 @@ removeLink(position) {
 		}
 	}
 	return this;
-},
+}, */
