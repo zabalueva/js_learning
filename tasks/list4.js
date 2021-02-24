@@ -25,7 +25,10 @@ console.log(min(0,0,0,1)) */
 console.log(avg([34, 6, 11, 33, 0, -10, 10, 3, 22, -18, 6, 4, -21, 32, 23, 18, -33, 23, 0, -1]));
 console.log(undefined.length); */
 
-
+//brackets можно решить через стек можно через удаление пары скобок,
+// смотри в сторону поиска совпадений и удаления их(например replace). Если в конце удалилось всё - значит тру
+//если скобка есть в массиве открывающих, то нужно проверить
+//что следующая за ней находится на соотв позиции в массиве закрывающих а если её там нет то проверить что следующая тоже открывающая
 function check(str, bracketsConfig) {
 	let result = false;
 	let bracketsConfigAll = [];
@@ -54,10 +57,6 @@ function check(str, bracketsConfig) {
 
 		for (let i = 0; i < workLength; i++) {
 			find = bracketsConfigAllList.indexOf(str[i]);
-			console.log(find)
-			console.log(bracketsConfigAllList[find + 1])
-
-
 
 			if (bracketsConfigAllList[find + 1]) {
 

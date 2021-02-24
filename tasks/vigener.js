@@ -1,11 +1,10 @@
 class VigenereCipheringMachine {
-	constructor(crypto) {
+  constructor(crypto) {
 		const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 		this.alphabet = alphabet;
 		let result = [];
 		this.result = result;
 		this.crypto = crypto;
-
 }
 
 	encrypt(message, key) {
@@ -13,32 +12,31 @@ class VigenereCipheringMachine {
 		let arrKey = Array.from(key.toUpperCase());
 		let arrMessage = Array.from(message.toUpperCase().replace(/\s/g, ''));
 		let strMessage = message.toUpperCase().split('');
-		console.log(strMessage)
 
 		for (let i = 0; i < message.length; i++) {
 			arrKey.push(arrKey[i])
 		}
 
 		for (let i = 0; i < message.length; i++){
-			if (this.alphabet.indexOf(strMessage[i]) == -1) {
-				needSym = strMessage[i];
-				this.result.push(needSym);
-
-				if (strMessage[i] == ' ') {
-					needSym = this.alphabet.indexOf(strMessage[i+1]) + this.alphabet.indexOf(arrKey[i]);
-				while (needSym > 25) {
-					needSym = needSym - 26;
-				}
-					this.result.push(this.alphabet[needSym])
-					
-				}
-
-			} else {
-				needSym = this.alphabet.indexOf(strMessage[i]) + this.alphabet.indexOf(arrKey[i]);
+			if (this.alphabet.indexOf(strMessage[i]) !== -1) {
+        needSym = this.alphabet.indexOf(strMessage[i]) + this.alphabet.indexOf(arrKey[i]);
 				while (needSym > 25) {
 					needSym = needSym - 26;
 				}
 				this.result.push(this.alphabet[needSym])
+      } else {
+				this.result.push(strMessage[i]);
+
+				if (strMessage[i] == ' ') {
+					needSym = this.alphabet.indexOf(strMessage[i+1]) + this.alphabet.indexOf(arrKey[i]);
+				  while (needSym > 25) {
+					  needSym = needSym - 26;
+				  }
+					this.result.push(this.alphabet[needSym]);
+					continue;
+
+				}
+
 			}
 		}
 

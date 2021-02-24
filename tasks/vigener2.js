@@ -24,37 +24,18 @@ class VigenereCipheringMachine {
 		}
 
 
-		for (let i = 0; i < strMessage.length; i++) {
-			if (strMessage[i] = ' ') {
-				strMessage[i + 1]
-
-				if (alphabet.indexOf(strMessage[i]) !== -1) {
-					alphabet[(alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])) > 25 ?
-						(alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])) - 26 :
-						alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])]
-				}
-				else {
-					strMessage[i] == ' ' ? strMessage[i]  :
-					strMessage[i] ;
-				}
-
-
-		}
-
-		}
-
-
-		/* res = strMessage.map(
-			(strMessage[i], index) => alphabet.indexOf(strMessage[i]) !== -1 ?
-				alphabet[(alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])) > 25 ?
-					(alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])) - 26 :
-					alphabet.indexOf(strMessage[i]) + alphabet.indexOf(arrKey[arrMessage.indexOf(strMessage[i], index)])] :
-				strMessage[i] == ' ' ? strMessage[i]  :
-					strMessage[i] ); */
+		strMessage.forEach(item => item + item		);
 
 
 
-		return res.join('');
+
+		/* (item, index) => alphabet.indexOf(item) !== -1 ?
+		alphabet[(alphabet.indexOf(item) + alphabet.indexOf(arrKey[arrMessage.indexOf(item, index)])) > 25 ?
+			(alphabet.indexOf(item) + alphabet.indexOf(arrKey[arrMessage.indexOf(item, index)])) - 26 :
+			alphabet.indexOf(item) + alphabet.indexOf(arrKey[arrMessage.indexOf(item, index)])] :
+		item == ' ' ? item  :
+			item  */
+		return strMessage.join('');
 
 	}
 
