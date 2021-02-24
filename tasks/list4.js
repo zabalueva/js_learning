@@ -26,76 +26,55 @@ console.log(avg([34, 6, 11, 33, 0, -10, 10, 3, 22, -18, 6, 4, -21, 32, 23, 18, -
 console.log(undefined.length); */
 
 //brackets можно решить через стек можно через удаление пары скобок,
+//добавили [(  в стек. следующий символ ожидаете или закрыть ) или открывающийся. у вас идет не тот на закрытие , все - ошибка
 // смотри в сторону поиска совпадений и удаления их(например replace). Если в конце удалилось всё - значит тру
 //если скобка есть в массиве открывающих, то нужно проверить
 //что следующая за ней находится на соотв позиции в массиве закрывающих а если её там нет то проверить что следующая тоже открывающая
 function check(str, bracketsConfig) {
-	let result = false;
 	let bracketsConfigAll = [];
 	let bracketsConfigAllList = [];
-	let find;
-	let workLength = str.length;
-	let regexp = /\p{Ps}/u;
 
-	if (str.length % 2 == 0) {
-		for (let i = 0; i < bracketsConfig.length; i++) {
-			bracketsConfigAll[i] = bracketsConfig[i];
-			bracketsConfigAllList = bracketsConfigAll.toString().split(",");
-		}
-		if (str.length !== 2) {
-			workLength = str.length - 2
-		}
+	for (let i = 0; i < bracketsConfig.length; i++) {
+		bracketsConfigAll[i] = bracketsConfig[i];
+		bracketsConfigAllList = bracketsConfigAll.toString().split(",");
+	}
+	let brackets = bracketsConfigAllList;
+	let stack = [];
+	console.log(str);
+	console.log(brackets);
 
-		for (let i = 0; i < workLength; i += 2) {
-			if (str[str.length - 1] == bracketsConfigAllList[i]) {
+	for (let bracket of str) {
+		let bracketsIndex = brackets.indexOf(bracket);
+		console.log(brackets.indexOf(bracket));
+
+	/* 	if ((str.indexOf(bracketsIndex + 1) - str.indexOf(bracket)) % 2 !== 0) {
+			return false;
+		} */
+
+		if (bracketsIndex % 2 === 0) {
+			if (brackets[brackets.indexOf(bracket)] ==
+				brackets[brackets.indexOf(bracket) + 1]
+			) {
+				stack.push(bracketsIndex + 1);
+				stack.pop();
+			} else {
+				stack.push(bracketsIndex + 1);
+			}
+			console.log(stack);
+		} else {
+			if (stack.pop() !== bracketsIndex) {
 				return false;
 			}
 		}
-
-		console.log(str);
-		console.log(bracketsConfigAllList);
-
-		for (let i = 0; i < workLength; i++) {
-			find = bracketsConfigAllList.indexOf(str[i]);
-
-			if (bracketsConfigAllList[find + 1]) {
-
-				if (i % 2 == 0) {
-					for (let j = i + 1; j < str.length; j += 2) {
-
-						if (bracketsConfigAllList[find + 1] == str[j]) {
-							console.log(`true on index ${i}${j}`);
-							result = true;
-							break;
-						} else {
-							console.log(`false == 0 on index ${i}${j} !`)
-							result = false;
-							break;
-						}
-					}
-				}
-
-				if (i % 2 !== 0) {
-					for (let j =  i + 1; j < str.length; j += 2) {
-
-						if (str[j] == bracketsConfigAllList[find + 1]) {
-							console.log(`true on index ${i}${j}`)
-							result = true;
-							break;
-						} else {
-							console.log(`false ${str.length }i ${str[i] } str[j]  ${str[j]} bracketsConfigAllList[find + 1] ${bracketsConfigAllList[find + 1]} on index ${i}${j}`)
-							result = false;
-							break;
-						}
-					}
-				}
-			}
-		}
 	}
-	return result;
+	return stack.length === 0;
 }
 
-
-
 /* console.log(check("())(", [["(", ")"]])); // -> false */
-console.log(check("111115611111111222288888822225577877778775555666677777777776622222", [['1', '2'], ['3', '4'], ['5', '6'], ['7', '7'], ['8', '8']])); // -> false
+console.log(
+	check("|(|)", [
+		["(", ")"],
+		["|", "|"],
+	])
+); // -> false
+/* console.log(check("111115611111111222288888822225577877778775555666677777777776622222", [['1', '2'], ['3', '4'], ['5', '6'], ['7', '7'], ['8', '8']])); // -> false */
