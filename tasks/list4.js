@@ -40,34 +40,34 @@ function check(str, bracketsConfig) {
 	}
 	let brackets = bracketsConfigAllList;
 	let stack = [];
-	console.log(str);
-	console.log(brackets);
+	/* console.log(str);
+	console.log(brackets); */
 
 	for (let bracket of str) {
+
 		let bracketsIndex = brackets.indexOf(bracket);
-		console.log(brackets.indexOf(bracket));
 
-	/* 	if ((str.indexOf(bracketsIndex + 1) - str.indexOf(bracket)) % 2 !== 0) {
-			return false;
-		} */
 
+		/* console.log(brackets.indexOf(bracket));
+ */
 		if (bracketsIndex % 2 === 0) {
-			if (brackets[brackets.indexOf(bracket)] ==
-				brackets[brackets.indexOf(bracket) + 1]
-			) {
+			if (brackets[brackets.indexOf(bracket)] == brackets[brackets.indexOf(bracket) + 1]) {
+				if ((str.indexOf(bracket) - str.lastIndexOf(bracket)) % 2 == 0) {
+					return false;
+				}
 				stack.push(bracketsIndex + 1);
 				stack.pop();
 			} else {
 				stack.push(bracketsIndex + 1);
 			}
-			console.log(stack);
-		} else {
-			if (stack.pop() !== bracketsIndex) {
-				return false;
+				/* console.log(stack); */
+			} else {
+				if(stack.pop() !== bracketsIndex) {
+					return false;
+				}
 			}
 		}
-	}
-	return stack.length === 0;
+		return stack.length === 0;
 }
 
 /* console.log(check("())(", [["(", ")"]])); // -> false */
