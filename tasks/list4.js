@@ -24,45 +24,50 @@ console.log(min(0,0,0,1)) */
 /* console.log(max(-1, 0, -8, 5));
 console.log(avg([34, 6, 11, 33, 0, -10, 10, 3, 22, -18, 6, 4, -21, 32, 23, 18, -33, 23, 0, -1]));
 console.log(undefined.length); */
-
+//С одинаковыми скобками так. Последний элемент стека не скобка — помещаем скобку в стек. Последний элемент стека скобка - вытаскиваем её из стека.
 //brackets можно решить через стек можно через удаление пары скобок,
 //добавили [(  в стек. следующий символ ожидаете или закрыть ) или открывающийся. у вас идет не тот на закрытие , все - ошибка
 // смотри в сторону поиска совпадений и удаления их(например replace). Если в конце удалилось всё - значит тру
 //если скобка есть в массиве открывающих, то нужно проверить
 //что следующая за ней находится на соотв позиции в массиве закрывающих а если её там нет то проверить что следующая тоже открывающая
+/* console.log(str.replace(new RegExp(`${str[str.indexOf(item)]}`, "gi"), "")); */
 function check(str, bracketsConfig) {
 	let bracketsConfigAll = [];
-	let bracketsConfigAllList = [];
+    let bracketsConfigAllList = [];
+    let stack = [];
 
 	for (let i = 0; i < bracketsConfig.length; i++) {
 		bracketsConfigAll[i] = bracketsConfig[i];
 		bracketsConfigAllList = bracketsConfigAll.toString().split(",");
 	}
-	let brackets = bracketsConfigAllList;
-	let stack = [];
-	/* console.log(str);
-	console.log(brackets); */
 
-	for (let bracket of str) {
+	console.log(str);
+	console.log(	bracketsConfigAllList);
 
-		let bracketsIndex = brackets.indexOf(bracket);
+	for (let item of str) {
+		let bracketsIndex = bracketsConfigAllList.indexOf(item);
 
-
-		/* console.log(brackets.indexOf(bracket));
- */
-		if (bracketsIndex % 2 === 0) {
-			if (brackets[brackets.indexOf(bracket)] == brackets[brackets.indexOf(bracket) + 1]) {
-				if ((str.indexOf(bracket) - str.lastIndexOf(bracket)) % 2 == 0) {
-					return false;
-				}
+		if (bracketsIndex % 2 == 0) {
 				stack.push(bracketsIndex + 1);
+			console.log(stack);
+			if (bracketsConfigAllList[bracketsConfigAllList.indexOf(item)]
+				== bracketsConfigAllList[bracketsConfigAllList.indexOf(item) + 1] &&
+				stack[stack.length - 1] !== bracketsIndex + 1) {
+				stack.push(bracketsIndex + 1);
+				console.log('l')
+
+			} else
+			if (bracketsConfigAllList[bracketsConfigAllList.indexOf(item)]
+				== bracketsConfigAllList[bracketsConfigAllList.indexOf(item) + 1] &&
+				stack[stack.length - 1] == str[str.indexOf(item)]) {
 				stack.pop();
-			} else {
+			}
+			else {
 				stack.push(bracketsIndex + 1);
 			}
-				/* console.log(stack); */
-			} else {
-				if(stack.pop() !== bracketsIndex) {
+		} else {
+
+				if (stack.pop() !== bracketsIndex) {
 					return false;
 				}
 			}
@@ -77,4 +82,10 @@ console.log(
 		["|", "|"],
 	])
 ); // -> false
-/* console.log(check("111115611111111222288888822225577877778775555666677777777776622222", [['1', '2'], ['3', '4'], ['5', '6'], ['7', '7'], ['8', '8']])); // -> false */
+console.log(
+	check("(||)", [
+		["(", ")"],
+		["|", "|"],
+	])
+);
+console.log(check("8888877878887777777888888887777777887887788788887887777777788888888887788888", [['1', '2'], ['3', '4'], ['5', '6'], ['7', '7'], ['8', '8']])); // -> false
