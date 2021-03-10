@@ -32,28 +32,36 @@ console.log(isIsogram('Dermatogglyphics')) */
 
 function calc(x) {
 
-		let total1 = [];
-		for (let i in x.split('')){
-			total1.push(x.charCodeAt(i));
-		}
-	console.log(total1);
-		let total2 = [];
-		for (let i of total1){
-			total2.push(+i.toString().replace(/7/g, '1'))
+	let total1 = [];
+  for (let i in x.split('')){
+    total1.push(x.charCodeAt(i));
+  }
+
+	console.log(total1)
+  let total1Sum = [];
+  for (let i of total1.join('').split('')){
+    total1Sum.push(+i);
 	}
-	console.log(total2);
-	let totalSum = total1.join('').split('');
 
-	for (let item in totalSum) {
-	item => +item
-}
-	console.log(totalSum);
-	console.log(total1.reduce((sum, item) => sum + item, 0))
-	console.log(totalSum.reduce((sum,item) => sum + item, 0))
-		return total1.reduce((sum,item) => sum + item, 0) - total2.reduce((sum, item) => sum + item, 0);
 
-	/* return result.map(item => +item).reduce((sum, current) => sum + current, 0) - resultSum.map(item => +item).reduce((sum, current) => sum + current, 0); */
+  let total2 = [];
+  for (let i of total1){
+    total2.push(+i.toString().replace(/7/g, '1'))
+	}
+	console.log(total2)
+
+  let total2Sum = [];
+  for (let i of total2.join('').split('')){
+    total2Sum.push(+i);
+  }
+
+	console.log(total2Sum)
+  return total1Sum.reduce((sum,item) => sum + item, 0) - total2Sum.reduce((sum, item) => sum + item, 0);
 }
+
+
+
+
 
 console.log(calc('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
 
