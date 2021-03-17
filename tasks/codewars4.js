@@ -49,23 +49,27 @@ console.log(divCon([9, 3, '7', '3'])) */
 /* A.sort();
   return A[0] !== A[1] || A.length == 1 ? A[0] : A [A.length - 1] */
 
-/* function findOdd(A) {
+function findOdd(A) {
 	let stack = [];
+	let res = [];
 	A.sort();
 
-	for (let i = 0; i < A.length - 1; i++) {
-		stack.push(A[i]);
-		if (A[i + 1] == A[i]) {
-			console.log('d')
-			stack.pop();
-		}
+console.log(A.sort())
+
+		while (A.length >=1){
+			if (A[0] == A[1]) {
+				A.shift();
+				console.log(A)
+				A.shift();
+				console.log(A)
+			} else return A[0]
 	}
-console.log(stack)
-} */
+	return A[0];
+}
 /* function findOdd(A) {
 	return Object.assign(A.sort())
-}
-console.log(findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5 ])) */
+} */
+console.log(findOdd([ 20]))
 
 
 
