@@ -98,3 +98,25 @@ console.log(findOdd([1, 1, 2, -2, 5, 2, 4, 4, -1, -2, 5 ])) */
 }
 
 console.log(findOutlier([2,6,8,10,3])) */
+
+function fridayTheThirteenths(start, end) {
+	let date = new Date(start, 0, 1);
+	let date2 = new Date(end, 11, 31);
+	let res;
+	console.log(date);
+	console.log(date2);
+
+	console.log(+date);
+	console.log(+date2)
+	/* for (let i = +date; i < +date2; i + (24 * 3600 * 1000)){
+		let dateF = new Date(i);
+		if (dateF.getDay() == 5 && dateF.getDate() == 13) {
+			console.log('its 5');
+			res = 1;
+		}
+	} */
+
+
+	return res;
+}
+console.log(fridayTheThirteenths(1999, 2000))
