@@ -250,49 +250,61 @@ console.log(encodeLine('')); */
 
 function getDNSStats(domains) {
   let doms = {};
-  let count = 0;
-/*   let fer = '.ru.yandex'
-  let tro = fer.includes('.ru')
-  console.group(tro); */
+  let count = 1;
+  let objReg = {};
+  let temp = 1;
+  let arr = [];
+
+  /* let re = new RegExp(/.ru/g);
+  let qual = domains.toString().match(re).length;
+  objReg[re.toString()] = qual;
+  console.log(objReg);
+  let reg = new RegExp(/music.yandex.ru/g);
+  let quali = domains.toString().match(reg).length;
+  console.log(quali)
+   */
+
 
   for (let i = 0; i < domains.length; i++) {
-    domains[i] = domains[i].split('.');
-    doms[domains[i][Math.max(domains[i].length - 1)]] = count;
-    console.log()
-    if (domains[i][Math.max(domains[i].length - 1)] === domains[i][Math.max(domains[i].length - 1)]) {
-      count = count + 1;
+    domains[i] = domains[i].split('.').reverse();
+    console.log(domains[i]);
+
+    for (let j = 0; j < domains[i].length; j++) {
+      doms[`.${domains[i][j]}`] = 1;
+      let reg = new RegExp(/`${domains[i][j]}/g);
+
+      console.log(domains[i][j])
+      if (domains[i].toString().match(reg)) {
+        doms[`.${domains[i][j]}`] = domains.toString().match(reg).length;
+        /* doms[`.${domains[i][j]}`] = +doms[`.${domains[i][j]}`] + 1; */
+      } else doms[`.${domains[i][j]}`] = 0;
+
     }
-    /* for (let j = Math.max(domains[i].length - 1); j >= 0; j--) {
 
-      if (domains[i].includes(domains[i][j])) {
-        console.log(domains[i]);
-        let io = domains[i][j].toString();
-        console.log(io)
 
-        count = count + 1;
-        doms[domains[i][j]] = count;
-        count = 0;
+    /* doms.hasOwnProperty(`.${domains[i][j]}` */
+
+
+    if (domains[i][Math.max(domains[i].length - 3)]) {
+      doms[`${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}`] = temp;
+      if (`${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}` ===
+      `${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}`) {
+        temp = temp + 1;
       }
-    } */
-    console.log(doms)
-    /* if (doms[domains[i][j]] !== 0) {
-      doms[domains[i][j]] =+ 1
-    } else
-    doms[domains[i][j]] = 0;
+
+    }
   }
-}
-console.log(doms) */
-  }
-  return domains;
+
+  return doms;
 }
 
-   domains = [
+  domains = [
     'code.yandex.ru',
     'music.yandex.ru',
     'yandex.ru'
   ]
 
-   console.log(getDNSStats(domains));
+  console.log(getDNSStats(domains));
 
   /*  ******************
   4 8 12
