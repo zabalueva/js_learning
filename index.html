@@ -21,6 +21,7 @@
 <script>
 function getListContent() {
   let fragment = new DocumentFragment();
+  let y;
 
   for(let i=1; i<=3; i++) {
     let li = document.createElement('li');
@@ -34,7 +35,7 @@ function getListContent() {
 ul.append(getListContent()); // (*)
 </script>
 
-    <script src="tasks/codewars4.js"></script>
+    <script src="tasks/algorithms.js"></script>
 
    <!--  <script>
       function showNotification({ top = 0, right = 0, className, html }) {
