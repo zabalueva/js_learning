@@ -43,7 +43,6 @@ matrix = [
 
 console.log(getMatrixElementsSum(matrix)) */
 
-
 /*
 function getCommonCharacterCount(s1, s2) {
   let arr = [];
@@ -61,7 +60,6 @@ function getCommonCharacterCount(s1, s2) {
 s1 = "aabcc";
 s2 = "adcaa",
 console.log(getCommonCharacterCount(s1, s2)) */
-
 
 /* arr = [-1, 150, 190, 170, -1, -1, 160, 180]
  /*
@@ -82,8 +80,6 @@ function sortByHeight(arr) {
 
 console.log(sortByHeight(arr)); */
 
-
-
 /* matrix = [
   [true, false, false],
   [false, true, false],
@@ -91,11 +87,11 @@ console.log(sortByHeight(arr)); */
   ] */
 
 /*   * The result should be following:
-  * [
-  *  [1, 2, 1],
-  *  [2, 1, 1],
-  *  [1, 1, 1]
-  * ] */
+ * [
+ *  [1, 2, 1],
+ *  [2, 1, 1],
+ *  [1, 1, 1]
+ * ] */
 
 /*   function minesweeper(matrix) {
     const arr = [];
@@ -114,7 +110,6 @@ console.log(sortByHeight(arr)); */
 }
 
 console.log( minesweeper(matrix)); */
-
 
 /* function deleteDigit(n) {
   let arr = Array.from(n.toString());
@@ -164,8 +159,7 @@ function renameFiles(names) {
 console.log(renameFiles(["file", "file", "image", "file(1)", "file"]));
 //["file", "file(1)", "image", "file(1)(1)", "file(2)"] */
 
-
-function getSumOfDigits(n) {
+/* function getSumOfDigits(n) {
   let sum = 0;
   const arr = Array.from(n.toString());
   for (let i = 0; i < arr.length; i++) {
@@ -176,4 +170,130 @@ function getSumOfDigits(n) {
   } else return sum;
   }
 
-  console.log(getSumOfDigits(123) )
+  console.log(getSumOfDigits(123) ) */
+
+/* For ([1, 2, 3], 1) should return 0
+ *For ([1, 2, 3], 2) should return 1 */
+
+/* function findIndex(array, value) {
+  let first = 0;
+  let last = array.length - 1;
+  let find;
+  let found = false;
+  let center;
+
+  while (found === false && first <= last) {
+    center = Math.floor((first + last) / 2);
+    if (array[center] === value) {
+      found = true;
+      find = center;
+    } else if (array[center] > value) {
+      last = center - 1;
+    } else {
+      first = center + 1;
+    }
+  }
+  return find;
+}
+
+console.log(findIndex([1, 2, 3], 2)); */
+
+
+/* For aabbbc should return 2a3bc */
+
+/* function encodeLine(str) {
+  const arr = Array.from(str);
+  const newArr = [];
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      count = count + 1;
+    } else {
+      if (count === 0) {
+        newArr.push(arr[i])
+      } else {
+        newArr.push(`${count + 1}${arr[i]}`);
+        count = 0;
+      }
+    }
+  }
+  return newArr.join('');
+}
+
+console.log(encodeLine('')); */
+
+/* aaaatttt'), '4a4t');
+    assert.strictEqual(encodeLine('aabbccc'), '2a2b3c');
+    assert.strictEqual(encodeLine('abbcca'), 'a2b2ca');
+    assert.strictEqual(encodeLine('xyz'), 'xyz');
+    assert.strictEqual(encodeLine(''), ''); */
+
+    /* Given an array of domains, return the object with the appearances of the DNS.
+    *
+    * @param {Array} domains
+    * @return {Object}
+    *
+    * @example
+    * domains = [
+    *  'code.yandex.ru',
+    *  'music.yandex.ru',
+    *  'yandex.ru'
+    * ]
+    *
+    * The result should be the following:
+    * {
+    *   '.ru': 3,
+    *   '.ru.yandex': 3,
+    *   '.ru.yandex.code': 1,
+    *   '.ru.yandex.music': 1,
+    * } */
+
+function getDNSStats(domains) {
+  let doms = {};
+  let count = 0;
+/*   let fer = '.ru.yandex'
+  let tro = fer.includes('.ru')
+  console.group(tro); */
+
+  for (let i = 0; i < domains.length; i++) {
+    domains[i] = domains[i].split('.');
+    doms[domains[i][Math.max(domains[i].length - 1)]] = count;
+    console.log()
+    if (domains[i][Math.max(domains[i].length - 1)] === domains[i][Math.max(domains[i].length - 1)]) {
+      count = count + 1;
+    }
+    /* for (let j = Math.max(domains[i].length - 1); j >= 0; j--) {
+
+      if (domains[i].includes(domains[i][j])) {
+        console.log(domains[i]);
+        let io = domains[i][j].toString();
+        console.log(io)
+
+        count = count + 1;
+        doms[domains[i][j]] = count;
+        count = 0;
+      }
+    } */
+    console.log(doms)
+    /* if (doms[domains[i][j]] !== 0) {
+      doms[domains[i][j]] =+ 1
+    } else
+    doms[domains[i][j]] = 0;
+  }
+}
+console.log(doms) */
+  }
+  return domains;
+}
+
+   domains = [
+    'code.yandex.ru',
+    'music.yandex.ru',
+    'yandex.ru'
+  ]
+
+   console.log(getDNSStats(domains));
+
+  /*  ******************
+  4 8 12
+     ******************* */
