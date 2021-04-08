@@ -158,7 +158,7 @@ console.log(new Array(1, 2));
 console.log(Array(1, 2));
 console.log([1, 2]);
 /* console.log(1..2) */
-
+/* ffff */
 
 function mygcd(x, y) {
 	let targ;
