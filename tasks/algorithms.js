@@ -249,52 +249,41 @@ console.log(encodeLine('')); */
     * } */
 
 function getDNSStats(domains) {
-  let doms = {};
-  let count = 1;
-  let objReg = {};
-  let temp = 1;
-  let arr = [];
 
-  /* let re = new RegExp(/.ru/g);
-  let qual = domains.toString().match(re).length;
-  objReg[re.toString()] = qual;
-  console.log(objReg);
-  let reg = new RegExp(/music.yandex.ru/g);
-  let quali = domains.toString().match(reg).length;
-  console.log(quali)
-   */
+  const doms = {};
+  const arr = domains.slice();
+  let arr2 = [];
 
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr[i].length; j++) {
 
-  for (let i = 0; i < domains.length; i++) {
-    domains[i] = domains[i].split('.').reverse();
-    console.log(domains[i]);
+      let find = arr[i][j].split('.').reverse();
+      console.log(find);
+      let count;
+      count = find.filter(el => el = find[0]).length;
+      let reg = new RegExp(find[0], 'g');
+      let str = arr.join(".");
+      doms[`.${find[0]}`] = str.match(reg).length;
 
-    for (let j = 0; j < domains[i].length; j++) {
-      doms[`.${domains[i][j]}`] = 1;
-      let reg = new RegExp(/`${domains[i][j]}/g);
-
-      console.log(domains[i][j])
-      if (domains[i].toString().match(reg)) {
-        doms[`.${domains[i][j]}`] = domains.toString().match(reg).length;
-        /* doms[`.${domains[i][j]}`] = +doms[`.${domains[i][j]}`] + 1; */
-      } else doms[`.${domains[i][j]}`] = 0;
-
-    }
+      console.log(arr.join("."));
 
 
-    /* doms.hasOwnProperty(`.${domains[i][j]}` */
+console.log(str.match(/yandex/g));
 
+      console.log(find[1]);
+      console.log(str);
+console.log(str.match(reg).length)
+      if (find.length > 2) {
+        const reg2 = new RegExp(find[0] + `.` +find[1] +`.` +find[2], 'g');
+        doms[`.${find[0]}.${find[1]}.${find[2]}`] = str.match(reg2).length;
+      } /* else if (find.length > 1) {
+        const reg3 = new RegExp(`.${find[0]}.${find[find.length - 1]}`, 'g');
+        doms[`.${find[0]}.${find[find.length - 1]}`] = str.match(reg3).length;
+      } */
 
-    if (domains[i][Math.max(domains[i].length - 3)]) {
-      doms[`${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}`] = temp;
-      if (`${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}` ===
-      `${domains[i][Math.max(domains[i].length - 1)]}.${domains[i][Math.max(domains[i].length - 3)]}`) {
-        temp = temp + 1;
-      }
 
     }
   }
-
   return doms;
 }
 
@@ -304,7 +293,7 @@ function getDNSStats(domains) {
     'yandex.ru'
   ]
 
-  console.log(getDNSStats(domains));
+  console.log(getDNSStats([domains]));
 
   /*  ******************
   4 8 12
