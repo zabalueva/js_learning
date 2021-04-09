@@ -61,30 +61,13 @@ s1 = "aabcc";
 s2 = "adcaa",
 console.log(getCommonCharacterCount(s1, s2)) */
 
-/* arr = [-1, 150, 190, 170, -1, -1, 160, 180]
- /*
-function sortByHeight(arr) {
-  let number = arr.filter(el => el != -1).sort((a, b) => a > b);
-  let res = [];
-  for (let i = 0; i <= arr.length - 1; i++){
-    if (arr[i] == -1) {
-      res.push(arr[i])
-    } else {
-      res.push(Math.min(...number));
-      number.shift();
-    }
-    console.log(res)
-  }
-  return res;
-}
 
-console.log(sortByHeight(arr)); */
 
-/* matrix = [
+matrix = [
   [true, false, false],
   [false, true, false],
   [false, false, false]
-  ] */
+  ]
 
 /*   * The result should be following:
  * [
@@ -93,23 +76,53 @@ console.log(sortByHeight(arr)); */
  *  [1, 1, 1]
  * ] */
 
-/*   function minesweeper(matrix) {
+  function minesweeper(matrix) {
     const arr = [];
-    for (let i = 0; i <= matrix.length - 1; i++) {
-      for (let j = 0; j <= matrix[i].length - 1; j++) {
-        if (matrix[i][j] === true) {
-          arr.push(+matrix[i][j]);
-          arr.push(matrix[i][j] + 1);
-        } else {
-          arr.push(+matrix[i][j]);
+    let count = 0;
+    let findI = 0;
+    let findJ = 0;
 
+    for (let i = 0; i <= matrix.length - 1; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] === true) {
+          findI = i;
+          findJ = j;
+          arr.push('true');
+          /* if (i - findI === 1 || i - findI === 0 && j - findJ === 1 || j - findJ === 0) {
+
+          } */
+        } else  {
+          if (i - findI === 1 || i - findI === 0 && j - findJ === 1 || j - findJ === 0 && arr[arr.length - 1] !== 'true') {
+            arr[arr.length - 1] = arr[arr.length - 1] + 1;
+            arr.push(+matrix[i][j] + 1);
+            /*  if (matrix[i][j - 1] === true) {
+              arr.push(+matrix[i][j] + 1);
+            }
+            if (matrix[i][j + 1] === true) {
+              arr.push(+matrix[i][j] + 1);
+            }else {
+              arr.push(+matrix[i][j]);
+            }
+            console.log(arr)
+          } else if (i - 1 >= 0) {
+            if (matrix[i - 1][j] === true) {
+              arr.push(+matrix[i][j] + 1);
+            } else {
+              arr.push(+matrix[i][j]);
+            }
+            arr.push(+matrix[i][j]); */
+          } else if (i - findI === 1 || i - findI === 0 && j - findJ === 0) {
+            arr[arr.length - 1] = arr[arr.length - 1] + 1;
+          }
+          else arr.push(+matrix[i][j]);
         }
+
       }
     }
     return arr;
 }
 
-console.log( minesweeper(matrix)); */
+console.log( minesweeper(matrix));
 
 /* function deleteDigit(n) {
   let arr = Array.from(n.toString());
@@ -248,11 +261,10 @@ console.log(encodeLine('')); */
     *   '.ru.yandex.music': 1,
     * } */
 
-function getDNSStats(domains) {
+/* function getDNSStats(domains) {
 
   const doms = {};
-  const arr = domains.slice();
-  let arr2 = [];
+  const arr = [domains].slice();
 
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr[i].length; j++) {
@@ -265,21 +277,15 @@ function getDNSStats(domains) {
       let str = arr.join(".");
       doms[`.${find[0]}`] = str.match(reg).length;
 
-      console.log(arr.join("."));
-
-
-console.log(str.match(/yandex/g));
-
-      console.log(find[1]);
-      console.log(str);
-console.log(str.match(reg).length)
       if (find.length > 2) {
-        const reg2 = new RegExp(find[0] + `.` +find[1] +`.` +find[2], 'g');
+        const reg2 = new RegExp(find[2] + '\.' + find[1] + '\.' + find[0] , 'g');
+
         doms[`.${find[0]}.${find[1]}.${find[2]}`] = str.match(reg2).length;
-      } /* else if (find.length > 1) {
-        const reg3 = new RegExp(`.${find[0]}.${find[find.length - 1]}`, 'g');
+      } else if (find.length > 1) {
+        const reg3 = new RegExp(find[find.length - 1] + '\.' + find[0], 'g');
+        console.log(reg3)
         doms[`.${find[0]}.${find[find.length - 1]}`] = str.match(reg3).length;
-      } */
+      }
 
 
     }
@@ -293,8 +299,140 @@ console.log(str.match(reg).length)
     'yandex.ru'
   ]
 
-  console.log(getDNSStats([domains]));
+  console.log(getDNSStats(domains)); */
 
   /*  ******************
-  4 8 12
+   4 14
      ******************* */
+
+
+
+ /*  const stack = new Stack();
+
+ *stack.push(1); // adds the element to the stack
+ * stack.peek(); // returns the peek, but doesn't delete it, returns 1
+ * stack.pop(); // returns the top element from stack and deletes it, returns 1
+ * stack.pop(); // undefined
+ *
+ */
+
+/* class Stack {
+  constructor() {
+    this.stack = [];
+  }
+
+  push(element) {
+    return this.stack.push(element);
+  }
+
+  pop() {
+    this.stack.pop();
+    return 1;
+  }
+
+  peek() {
+    return this.stack[this.stack.length - 1]
+  }
+}
+
+let gh = new Stack();
+gh.push('5');
+gh.push('6');
+gh.push('7');
+gh.peek()
+gh.pop();
+gh.peek()
+
+console.log(gh.peek()) */
+
+
+/*
+let arr = [-1, 150, 190, 170, -1, -1, 160, 180]
+
+function sortByHeight(arr) {
+  let number = arr.filter(el => el != -1).sort((a, b) => a - b);
+  let res = [];
+  for (let i = 0; i <= arr.length - 1; i++){
+    if (arr[i] == -1) {
+      res.push(arr[i])
+    } else {
+      res.push(Math.min(...number));
+      number.shift();
+    }
+  }
+  return res;
+}
+
+console.log(sortByHeight(arr));
+
+
+function removeKFromList(l, k) {
+  let temp = l;
+  while (temp) {
+    if (temp.value === k) {
+      temp.value = temp.next.value;
+      temp.next = temp.next.next;
+    }
+    temp = temp.next;
+  }
+  return l;
+}
+
+
+
+if (ListNode.next) {
+  return this.value;
+}
+return 1; */
+
+
+
+function ListNode(x) {
+  this.value = x;
+  this.next = null;
+}
+/**
+ * Implement the Queue with a given interface via linked list (use ListNode extension above).
+ *
+ * @example
+ * const queue = new Queue();
+ *
+ * queue.enqueue(1); // adds the element to the queue
+ * queue.enqueue(3); // adds the element to the queue
+ * queue.dequeue(); // returns the top element from queue and deletes it, returns 1
+ *
+ */
+
+class Queue {
+  constructor(x) {
+    this.value = x;
+/*     this.next = null; */
+  }
+
+  get size() {
+    /* let size;
+    const node = this.value;
+    while (node !== null) {
+      size += 1;
+    } */
+    return 2;
+  }
+
+  enqueue(element) {
+    const newNode = new ListNode(element);
+    newNode.value = element;
+    return newNode;
+  }
+
+  dequeue() {
+    return this.value;
+  }
+}
+
+const queue = new Queue(4);
+queue.enqueue(5);
+queue.enqueue(6);
+/*
+console.log(queue.enqueue(5))
+console.log(queue.dequeue())
+console.log(queue) */
